@@ -12,10 +12,10 @@ class UploaderController extends Controller
     {
 
     	// $this->validate($request, [
-    	// 	'files' => 'required|image'
+    	// 	'files' => 'mimes:jpeg,bmp,png,gif,svg,pdf'
     	// ]);
 
-    	// dd($request->file('files'));
+    	dd($request->file('files'));
 
          foreach($request->file('files') as $file)
          {
