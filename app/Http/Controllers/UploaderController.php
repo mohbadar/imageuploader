@@ -11,20 +11,24 @@ class UploaderController extends Controller
     public function upload(Request $request)
     {
 
-    	$this->validate($request, [
-    		'image' => 'required|image'
-    	]);
+    	// $this->validate($request, [
+    	// 	'files' => 'required|image'
+    	// ]);
 
-    	// dd($request->file('image'));
+    	// dd($request->file('files'));
 
+         foreach($request->file('files') as $file)
+         {
+            if($file)
+            {
+                 $fileExtension = $file->getClientOriginalExtension();
+                 $dbPath = "/files/".time().'.'.$fileExtension;
+                 // $file->move(public_path("/files/"), $dbPath);
+                 $file->store('/files/' . $dbPath); 
+            }
 
-    	$file = $request->file('image');
-       
-        $fileExtension = $file->getClientOriginalExtension();
-        $dbPath = "/files/".substr($request->title,0,10).'_'.time().'.'.$fileExtension;
-        $file->move(public_path("/files/"), $dbPath);
+         }
         
-
        return back()->with('successMsg', 'Thanks for your contribution.');
     }
 }

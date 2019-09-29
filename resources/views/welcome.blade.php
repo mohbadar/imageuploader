@@ -20,7 +20,7 @@
 
 
   <div class="image-upload-wrap">
-    <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" name="image" required />
+    <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" name="files[]" required  multiple />
     <div class="drag-text">
       <h3>Drag and drop a file or select add Image</h3>
     </div>
